@@ -112,6 +112,7 @@
     "@storybook/node-logger": "^6.4.9",
     "@storybook/preset-create-react-app": "^4.0.0",
     "@storybook/react": "^6.4.9",
+    "@storybook/testing-react": "^1.2.2",
     "cz-conventional-changelog": "3.3.0",
     "webpack": "^5.65.0"
   },
