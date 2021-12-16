@@ -41,4 +41,12 @@ export const IconTextWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  width: 100px;
+  min-width: 100px;
+`;
+
+export const WeatherTitle = styled.h1`
+  text-align: center;
+  margin: 48px auto;
 `;

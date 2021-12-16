@@ -2,7 +2,8 @@ export default {
   display: { 
     main: 'Clear',
     description: 'clear sky',
-    icon: '01n'
+    icon: '01n',
+    city: 'Santos'
   },
   data: {
     temp: 281.52,
