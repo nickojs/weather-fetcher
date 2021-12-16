@@ -1,14 +1,14 @@
 import { WeatherContainer, WeatherHeader, WeatherDetails, WeatherTitle } from './styles';
 import IconText, { IconType } from './IconText';
 
-interface Display { 
+export interface Display { 
   main: string;
   description: string;
   icon: string;
   city: string;
 }
 
-interface WeatherData { 
+export interface WeatherData { 
   temp: number;
   tempFeel: number;
   pressure: number;
