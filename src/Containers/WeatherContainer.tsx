@@ -3,6 +3,7 @@ import useRequest from "../hooks/useRequest";
 import { getWeather } from '../services/endpoints';
 import usePosition from '../contexts/PositionContext';
 import WeatherCard, { Display, WeatherData, WeatherProps } from "../components/weatherCard/WeatherCard";
+import ErrorCard, { ErrorType } from '../components/errorCard/ErrorCard';
 
 interface APIResponse { 
   weather: Record<string, unknown>[];
@@ -62,9 +63,9 @@ export default (): JSX.Element => {
   return (
     <>
       {waitUser && <p>Waiting on user input</p>}
-      {browserGeoError && <p>User failed to provide their geolocation data</p>}
+      {browserGeoError && <ErrorCard error={ErrorType.REFUSED} />}
       {loading && <p>Fetching data...</p>}
-      {error && <p>Network Error: {error}</p>}
+      {error && <ErrorCard error={ErrorType.NETWORK} extraInfo={error} />}
       {weather && <WeatherCard {...weather} />} 
     </>
   );
