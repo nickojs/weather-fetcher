@@ -1,6 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import ErrorCard, { ErrorCardProps } from './ErrorCard';
-import errorMocks from './mocks';
+import ErrorCard, { ErrorCardProps, ErrorType } from './ErrorCard';
 
 export default {
   component: ErrorCard,
@@ -11,10 +10,11 @@ const ErrorCardStory: Story<ErrorCardProps> = (args) => <ErrorCard {...args} />;
 
 export const RefusedGeolocation = ErrorCardStory.bind({});
 RefusedGeolocation.args = {
-  error: errorMocks.refusedGeolocation
+  error: ErrorType.REFUSED
 };
 
 export const FailedToFetchData = ErrorCardStory.bind({});
 FailedToFetchData.args = {
-  error: errorMocks.networkError
+  error: ErrorType.NETWORK,
+  extraInfo: 'Extra info for the error'
 };
