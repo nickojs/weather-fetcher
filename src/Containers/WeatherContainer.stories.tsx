@@ -10,7 +10,7 @@ export default {
 
 const WeatherContainerStory: Story = (args) => (
   <PositionProvider>
-    <WeatherContainer {...args} />;
+    <WeatherContainer {...args} />
   </PositionProvider>
 );
 
