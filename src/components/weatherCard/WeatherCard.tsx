@@ -1,4 +1,5 @@
 import { WeatherContainer, WeatherHeader, WeatherDetails } from './styles';
+import IconText, { IconType } from './IconText';
 
 interface Display { 
   main: string;
@@ -22,28 +23,19 @@ export interface WeatherProps {
 
 export default (props: WeatherProps): JSX.Element => { 
   const { display, data } = props;
+  const { humidity, pressure, speed, direction } = data;
   return (
     <WeatherContainer data-testid="weather-card-root">
       <WeatherHeader>
-        <div>
-          {display.icon}
-          {display.main}
-        </div>
-        <div>
-          {data.temp}
-          {data.tempFeel}
-        </div>
+        <h1>Santos, SP</h1>
+        <p>{display.description}</p>
+        <img src={`http://openweathermap.org/img/w/${display.icon}.png`} alt="Weather Icon"/>
       </WeatherHeader>
-
+      <p>{data.temp}ºC</p>
       <WeatherDetails>
-        <div>
-          {data.speed}
-          {data.direction}
-        </div>
-        <div>
-          {data.humidity}
-          {data.pressure}
-        </div>
+        {IconText({ type: IconType.HUMIDITY, humidity })}
+        {IconText({ type: IconType.PRESSURE, pressure })}
+        {IconText({ type: IconType.WIND, speed, direction })}
       </WeatherDetails>
     </WeatherContainer>
   );
