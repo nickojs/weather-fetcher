@@ -24,6 +24,7 @@ export interface WeatherProps {
 
 export interface ReverseGeoLocationResponse { 
   name: string;
+  state: string;
 }
 
 export interface WeatherAPIResponse { 

@@ -6,7 +6,7 @@ import Loading from '../components/UI/loading/Loading';
 import usePosition from '../contexts/PositionContext';
 import { WeatherContainer } from './styles';
 import { getWeather, getCityName } from '../services/endpoints';
-import { injectCityName, weatherDataParser } from '../helpers/weather';
+import { injectExtraData, weatherDataParser } from '../helpers/weather';
 import { ErrorType, LoadingType, ReverseGeoLocationResponse, WeatherProps } from "../interfaces";
 
 
@@ -14,7 +14,7 @@ export default (): JSX.Element => {
   const [params, setParams] = useState({});
   const [cityParams, setCityParams] = useState({});
   const [weather, setWeather] = useState<WeatherProps>();
-  const [city, setCity] = useState<string>('');
+  const [location, setLocation] = useState({ city: '', state: '' });
   const [waitUser, setWaitUser] = useState(true);
   const { lat, lon, error: browserGeoError } = usePosition();
 
@@ -36,15 +36,17 @@ export default (): JSX.Element => {
   useEffect(() => {
     if (cityData) {
       const data = cityData[0] as unknown as ReverseGeoLocationResponse;
-      setCity(data.name);
+      const { name, state } = data;
+      setLocation({ city: name, state });
     }
   }, [cityData]);
 
   useEffect(() => {
-    if (city && weather) {
-      if (!weather.display.city) setWeather(w => w && injectCityName(city, w));
+    if ((location.state || location.city) && weather) {
+      const { city, state } = location;
+      if (!weather.display.city) setWeather(w => w && injectExtraData(city, state, w));
     }
-  }, [city, weather]);
+  }, [location, weather]);
 
   useEffect(() => {
     if (browserGeoError || error) setWaitUser(false);

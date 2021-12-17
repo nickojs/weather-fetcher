@@ -29,12 +29,13 @@ export const weatherDataParser = (weatherData: Record<string, unknown>): Weather
   };
 };
 
-export const injectCityName = (name: string, weatherObj: WeatherProps): WeatherProps => {
+export const injectExtraData = (city: string, state: string, weatherObj: WeatherProps): WeatherProps => {
   return {
     ...weatherObj,
     display: { 
       ...weatherObj.display,
-      city: name
+      city,
+      state
     }
   };
 };

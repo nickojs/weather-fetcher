@@ -5,13 +5,14 @@ import { tempParser as tp } from '../../helpers/weather';
 
 export default (props: WeatherProps): JSX.Element => { 
   const { display, data } = props;
-  const { city, description, icon } = display;
+  const { city, state, description, icon } = display;
   const { humidity, pressure, speed, direction, tempMin, tempMax } = data;
   
   return (
     <div>
       <WeatherHeader>
         <h1>{city}</h1>
+        <h5>{state}</h5>
         <p>{description}</p>
         <img src={`http://openweathermap.org/img/w/${icon}.png`} alt="Weather Icon"/>
       </WeatherHeader>
