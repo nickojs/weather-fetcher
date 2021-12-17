@@ -1,16 +1,14 @@
 import { useState, useEffect } from "react";
 import useRequest from "../hooks/useRequest";
-import WeatherCard, { WeatherProps } from "../components/weatherCard/WeatherCard";
-import ErrorCard, { ErrorType } from '../components/UI/errorCard/ErrorCard';
-import Loading, { LoadingType } from '../components/UI/loading/Loading';
+import WeatherCard from "../components/weatherCard/WeatherCard";
+import ErrorCard from '../components/UI/errorCard/ErrorCard';
+import Loading from '../components/UI/loading/Loading';
 import usePosition from '../contexts/PositionContext';
 import { WeatherContainer } from './styles';
 import { getWeather, getCityName } from '../services/endpoints';
 import { injectCityName, weatherDataParser } from '../helpers/weather';
+import { ErrorType, LoadingType, ReverseGeoLocationResponse, WeatherProps } from "../interfaces";
 
-interface ReverseGeoLocationResponse { 
-  name: string;
-}
 
 export default (): JSX.Element => { 
   const [params, setParams] = useState({});

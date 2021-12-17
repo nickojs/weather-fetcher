@@ -1,12 +1,4 @@
-export enum ErrorType {
-  NETWORK, 
-  REFUSED,
-}
-
-export interface ErrorCardProps {
-  type: ErrorType;
-  extraInfo?: string;
-}
+import { ErrorCardProps, ErrorType } from "../../../interfaces";
 
 export default ({ type, extraInfo }: ErrorCardProps): JSX.Element => { 
   const errorCopy = () => {

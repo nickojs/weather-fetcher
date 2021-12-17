@@ -1,5 +1,6 @@
 import { Story, Meta } from '@storybook/react';
-import Loading, { LoadingType, LoadingProps } from '../components/UI/loading/Loading';
+import Loading from '../components/UI/loading/Loading';
+import { LoadingProps, LoadingType } from '../interfaces';
 
 export default {
   component: Loading,

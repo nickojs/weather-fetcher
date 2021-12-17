@@ -1,5 +1,6 @@
 import { Story, Meta } from '@storybook/react';
-import ErrorCard, { ErrorCardProps, ErrorType } from '../components/UI/errorCard/ErrorCard';
+import ErrorCard from '../components/UI/errorCard/ErrorCard';
+import { ErrorCardProps, ErrorType } from '../interfaces';
 
 export default {
   component: ErrorCard,

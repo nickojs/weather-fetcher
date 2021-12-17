@@ -1,11 +1,4 @@
-export enum LoadingType {
-  NETWORK, 
-  USERINPUT,
-}
-
-export interface LoadingProps {
-  type: LoadingType,
-}
+import { LoadingProps, LoadingType } from "../../../interfaces";
 
 export default ({ type }: LoadingProps): JSX.Element => { 
   const loadingCopy = () => {

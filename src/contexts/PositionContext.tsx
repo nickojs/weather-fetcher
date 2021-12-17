@@ -1,9 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-
-export interface LatLon { 
-  lat: number;
-  lon: number;
-}
+import { LatLon } from '../interfaces';
 
 interface PositionContextProps extends LatLon {
   error: string;

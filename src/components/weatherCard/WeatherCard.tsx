@@ -1,26 +1,6 @@
 import { WeatherHeader, WeatherDetails, WeatherTitle, WeatherTitleContainer } from './styles';
 import IconText, { IconType } from './IconText';
-
-export interface Display { 
-  main: string;
-  description: string;
-  icon: string;
-  city: string;
-}
-
-export interface WeatherData { 
-  temp: number;
-  tempFeel: number;
-  pressure: number;
-  humidity: number;
-  speed: number;
-  direction: number;
-}
-
-export interface WeatherProps {
-  display: Display
-  data: WeatherData
-}
+import { WeatherProps } from '../../interfaces';
 
 export default (props: WeatherProps): JSX.Element => { 
   const { display, data } = props;

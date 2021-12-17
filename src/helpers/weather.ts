@@ -1,10 +1,4 @@
-import { Display, WeatherData, WeatherProps } from "../components/weatherCard/WeatherCard";
-
-interface WeatherAPIResponse { 
-  weather: Record<string, unknown>[];
-  main: Record<string, unknown>;
-  wind: Record<string, unknown>;
-}
+import { Display, WeatherAPIResponse, WeatherData, WeatherProps } from "../interfaces";
 
 export const weatherDataParser = (weatherData: Record<string, unknown>): WeatherProps => {
   const { weather, main, wind } = weatherData as unknown as WeatherAPIResponse;

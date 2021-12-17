@@ -1,7 +1,8 @@
 import { Story, Meta } from '@storybook/react';
-import WeatherCard, { WeatherProps } from '../components/weatherCard/WeatherCard';
+import WeatherCard from '../components/weatherCard/WeatherCard';
 import { WeatherContainer } from '../Containers/styles';
 import mock from '../components/weatherCard/mocks/';
+import { WeatherProps } from '../interfaces';
 
 export default {
   component: WeatherCard,
