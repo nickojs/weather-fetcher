@@ -10,11 +10,11 @@ const ErrorCardStory: Story<ErrorCardProps> = (args) => <ErrorCard {...args} />;
 
 export const RefusedGeolocation = ErrorCardStory.bind({});
 RefusedGeolocation.args = {
-  error: ErrorType.REFUSED
+  type: ErrorType.REFUSED
 };
 
 export const FailedToFetchData = ErrorCardStory.bind({});
 FailedToFetchData.args = {
-  error: ErrorType.NETWORK,
+  type: ErrorType.NETWORK,
   extraInfo: 'Extra info for the error'
 };

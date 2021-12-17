@@ -4,13 +4,13 @@ export enum ErrorType {
 }
 
 export interface ErrorCardProps {
-  error: ErrorType;
+  type: ErrorType;
   extraInfo?: string;
 }
 
-export default ({ error, extraInfo }: ErrorCardProps): JSX.Element => { 
+export default ({ type, extraInfo }: ErrorCardProps): JSX.Element => { 
   const errorCopy = () => {
-    switch (error) {
+    switch (type) {
     case ErrorType.NETWORK:
       return `Network Error: ${extraInfo}`;
     case ErrorType.REFUSED:
