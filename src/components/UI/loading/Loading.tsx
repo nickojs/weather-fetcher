@@ -3,13 +3,13 @@ export enum LoadingType {
   USERINPUT,
 }
 
-interface LoadingProps {
-  loading: LoadingType,
+export interface LoadingProps {
+  type: LoadingType,
 }
 
-export default ({ loading }: LoadingProps): JSX.Element => { 
+export default ({ type }: LoadingProps): JSX.Element => { 
   const loadingCopy = () => {
-    switch (loading) {
+    switch (type) {
     case LoadingType.USERINPUT:
       return 'Waiting on user input';
     case LoadingType.NETWORK:
