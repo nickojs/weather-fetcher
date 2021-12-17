@@ -36,7 +36,11 @@ export const IconTextWrapper = styled.div`
   min-width: 100px;
 `;
 
+export const WeatherTitleContainer = styled.div`
+  ${GridBase}
+  height: 160px;
+`;
+
 export const WeatherTitle = styled.h1`
   text-align: center;
-  margin: 48px auto;
 `;

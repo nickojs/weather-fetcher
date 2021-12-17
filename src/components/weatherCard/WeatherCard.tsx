@@ -1,4 +1,4 @@
-import { WeatherHeader, WeatherDetails, WeatherTitle } from './styles';
+import { WeatherHeader, WeatherDetails, WeatherTitle, WeatherTitleContainer } from './styles';
 import IconText, { IconType } from './IconText';
 
 export interface Display { 
@@ -34,7 +34,11 @@ export default (props: WeatherProps): JSX.Element => {
         <p>{description}</p>
         <img src={`http://openweathermap.org/img/w/${icon}.png`} alt="Weather Icon"/>
       </WeatherHeader>
-      <WeatherTitle>{data.temp}&deg;</WeatherTitle>
+      <WeatherTitleContainer>
+        {IconText({ type: IconType.TEMPMIN, temp: 20 })}
+        <WeatherTitle>{Math.round(data.temp)}&deg;</WeatherTitle>
+        {IconText({ type: IconType.TEMPMAX, temp: 40 })}
+      </WeatherTitleContainer>
       <WeatherDetails>
         {IconText({ type: IconType.HUMIDITY, humidity })}
         {IconText({ type: IconType.PRESSURE, pressure })}
