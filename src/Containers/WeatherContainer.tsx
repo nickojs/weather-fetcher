@@ -5,6 +5,7 @@ import usePosition from '../contexts/PositionContext';
 import WeatherCard, { Display, WeatherData, WeatherProps } from "../components/weatherCard/WeatherCard";
 import ErrorCard, { ErrorType } from '../components/UI/errorCard/ErrorCard';
 import Loading, { LoadingType } from '../components/UI/loading/Loading';
+import { WeatherContainer } from './styles';
 
 interface APIResponse { 
   weather: Record<string, unknown>[];
@@ -62,12 +63,12 @@ export default (): JSX.Element => {
   }, [browserGeoError, error]);
 
   return (
-    <>
+    <WeatherContainer>
       {waitUser && <Loading type={LoadingType.USERINPUT} />}
       {browserGeoError && <ErrorCard type={ErrorType.REFUSED} />}
       {loading && <Loading type={LoadingType.NETWORK} />}
       {error && <ErrorCard type={ErrorType.NETWORK} extraInfo={error} />}
       {weather && <WeatherCard {...weather} />} 
-    </>
+    </WeatherContainer>
   );
 };

@@ -1,4 +1,4 @@
-import { WeatherContainer, WeatherHeader, WeatherDetails, WeatherTitle } from './styles';
+import { WeatherHeader, WeatherDetails, WeatherTitle } from './styles';
 import IconText, { IconType } from './IconText';
 
 export interface Display { 
@@ -28,7 +28,7 @@ export default (props: WeatherProps): JSX.Element => {
   const { humidity, pressure, speed, direction } = data;
   
   return (
-    <WeatherContainer data-testid="weather-card-root">
+    <div>
       <WeatherHeader>
         <h1>{city}</h1>
         <p>{description}</p>
@@ -40,6 +40,6 @@ export default (props: WeatherProps): JSX.Element => {
         {IconText({ type: IconType.PRESSURE, pressure })}
         {IconText({ type: IconType.WIND, speed, direction })}
       </WeatherDetails>
-    </WeatherContainer>
+    </div>
   );
 };

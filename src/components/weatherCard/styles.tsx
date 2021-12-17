@@ -6,16 +6,6 @@ const GridBase = css`
   justify-content: space-around;
 `;
 
-export const WeatherContainer = styled.section`
-  max-width: 400px;
-  min-width: 300px;
-  
-  margin: 0 auto;
-  padding: 40px 12px;
-  
-  background: #fafafa;
-`;
-
 export const WeatherHeader = styled.div`
   ${GridBase}
   flex-direction: column;
