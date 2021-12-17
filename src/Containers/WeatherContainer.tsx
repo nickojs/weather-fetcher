@@ -4,6 +4,7 @@ import { getWeather } from '../services/endpoints';
 import usePosition from '../contexts/PositionContext';
 import WeatherCard, { Display, WeatherData, WeatherProps } from "../components/weatherCard/WeatherCard";
 import ErrorCard, { ErrorType } from '../components/UI/errorCard/ErrorCard';
+import Loading, { LoadingType } from '../components/UI/loading/Loading';
 
 interface APIResponse { 
   weather: Record<string, unknown>[];
@@ -62,10 +63,10 @@ export default (): JSX.Element => {
 
   return (
     <>
-      {waitUser && <p>Waiting on user input</p>}
-      {browserGeoError && <ErrorCard error={ErrorType.REFUSED} />}
-      {loading && <p>Fetching data...</p>}
-      {error && <ErrorCard error={ErrorType.NETWORK} extraInfo={error} />}
+      {waitUser && <Loading type={LoadingType.USERINPUT} />}
+      {browserGeoError && <ErrorCard type={ErrorType.REFUSED} />}
+      {loading && <Loading type={LoadingType.NETWORK} />}
+      {error && <ErrorCard type={ErrorType.NETWORK} extraInfo={error} />}
       {weather && <WeatherCard {...weather} />} 
     </>
   );
