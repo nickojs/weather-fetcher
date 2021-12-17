@@ -3,11 +3,14 @@ export interface Display {
   description: string;
   icon: string;
   city: string;
+  state: string;
 }
 
 export interface WeatherData { 
   temp: number;
-  tempFeel: number;
+  feelsLike: number;
+  tempMin: number;
+  tempMax: number;
   pressure: number;
   humidity: number;
   speed: number;

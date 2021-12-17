@@ -1,11 +1,12 @@
 import { WeatherHeader, WeatherDetails, WeatherTitle, WeatherTitleContainer } from './styles';
 import IconText, { IconType } from './IconText';
 import { WeatherProps } from '../../interfaces';
+import { tempParser as tp } from '../../helpers/weather';
 
 export default (props: WeatherProps): JSX.Element => { 
   const { display, data } = props;
   const { city, description, icon } = display;
-  const { humidity, pressure, speed, direction } = data;
+  const { humidity, pressure, speed, direction, tempMin, tempMax } = data;
   
   return (
     <div>
@@ -15,9 +16,9 @@ export default (props: WeatherProps): JSX.Element => {
         <img src={`http://openweathermap.org/img/w/${icon}.png`} alt="Weather Icon"/>
       </WeatherHeader>
       <WeatherTitleContainer>
-        {IconText({ type: IconType.TEMPMIN, temp: 20 })}
-        <WeatherTitle>{Math.round(data.temp)}&deg;</WeatherTitle>
-        {IconText({ type: IconType.TEMPMAX, temp: 40 })}
+        {IconText({ type: IconType.TEMPMIN, temp: tp(tempMin) })}
+        <WeatherTitle>{tp(data.temp)}&deg;</WeatherTitle>
+        {IconText({ type: IconType.TEMPMAX, temp: tp(tempMax) })}
       </WeatherTitleContainer>
       <WeatherDetails>
         {IconText({ type: IconType.HUMIDITY, humidity })}

@@ -6,7 +6,9 @@ export const weatherDataParser = (weatherData: Record<string, unknown>): Weather
 
   const data = {
     temp: main.temp,
-    tempFeel: main.feels_like,
+    feelsLike: main.feels_like,
+    tempMax: main.temp_max,
+    tempMin: main.temp_min,
     pressure: main.pressure,
     humidity: main.humidity,
     speed: wind.speed,
@@ -17,7 +19,8 @@ export const weatherDataParser = (weatherData: Record<string, unknown>): Weather
     main: weatherWithin.main,
     description: weatherWithin.description,
     icon: weatherWithin.icon,
-    city: ''
+    city: '',
+    state: ''
   } as Display;
 
   return {
@@ -35,3 +38,5 @@ export const injectCityName = (name: string, weatherObj: WeatherProps): WeatherP
     }
   };
 };
+
+export const tempParser = (temp: number) => Math.round(temp);
