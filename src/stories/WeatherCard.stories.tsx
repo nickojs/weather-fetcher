@@ -1,10 +1,10 @@
 import { Story, Meta } from '@storybook/react';
-import WeatherCard, { WeatherProps } from './WeatherCard';
-import mock from './mocks';
+import WeatherCard, { WeatherProps } from '../components/weatherCard/WeatherCard';
+import mock from '../components/weatherCard/mocks/';
 
 export default {
   component: WeatherCard,
-  title: 'Containers/WeatherCard'
+  title: 'Components/WeatherCard'
 } as Meta;
 
 const WeatherCardStory: Story<WeatherProps> = (args) => <WeatherCard {...args} />;

@@ -3,7 +3,7 @@ import useRequest from "../hooks/useRequest";
 import { getWeather } from '../services/endpoints';
 import usePosition from '../contexts/PositionContext';
 import WeatherCard, { Display, WeatherData, WeatherProps } from "../components/weatherCard/WeatherCard";
-import ErrorCard, { ErrorType } from '../components/errorCard/ErrorCard';
+import ErrorCard, { ErrorType } from '../components/UI/errorCard/ErrorCard';
 
 interface APIResponse { 
   weather: Record<string, unknown>[];
