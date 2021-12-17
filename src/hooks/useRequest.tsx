@@ -67,7 +67,7 @@ export default (params: Record<string, unknown>): typeof requestState => {
     if (Object.keys(params).length > 0) { 
       dispatch({ type: ActionTypes.LOADING, status: true });
       try {
-        const request = await api({ params });
+        const request = await api(params);
         dispatch({ type: ActionTypes.DATA, data: request.data });
       } catch (err) {
         let errorMsg = 'unknown error';
