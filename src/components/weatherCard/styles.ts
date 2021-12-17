@@ -11,7 +11,8 @@ export const WeatherHeader = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-
+  
+  * { font-family: 'sans-serif'; }
   p { margin: 24px 0; }
   h1, h5 { margin: 0; }
     
