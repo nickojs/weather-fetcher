@@ -12,7 +12,7 @@ export const WeatherHeader = styled.div`
   align-items: center;
   text-align: center;
 
-  p { margin: 24px 0 ; }
+  p { margin: 24px 0; }
   h1, h5 { margin: 0; }
     
   img { 
