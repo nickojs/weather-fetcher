@@ -1,57 +1,16 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import useRequest from "../hooks/useRequest";
-import { getWeather, getCityName } from '../services/endpoints';
-import usePosition from '../contexts/PositionContext';
-import WeatherCard, { Display, WeatherData, WeatherProps } from "../components/weatherCard/WeatherCard";
+import WeatherCard, { WeatherProps } from "../components/weatherCard/WeatherCard";
 import ErrorCard, { ErrorType } from '../components/UI/errorCard/ErrorCard';
 import Loading, { LoadingType } from '../components/UI/loading/Loading';
+import usePosition from '../contexts/PositionContext';
 import { WeatherContainer } from './styles';
-
-interface WeatherAPIResponse { 
-  weather: Record<string, unknown>[];
-  main: Record<string, unknown>;
-  wind: Record<string, unknown>;
-}
+import { getWeather, getCityName } from '../services/endpoints';
+import { injectCityName, weatherDataParser } from '../helpers/weather';
 
 interface ReverseGeoLocationResponse { 
   name: string;
 }
-
-const weatherDataParser = (weatherData: Record<string, unknown>): WeatherProps => {
-  const { weather, main, wind } = weatherData as unknown as WeatherAPIResponse;
-  const weatherWithin = weather[0];
-
-  const data = {
-    temp: main.temp,
-    tempFeel: main.feels_like,
-    pressure: main.pressure,
-    humidity: main.humidity,
-    speed: wind.speed,
-    direction: wind.deg
-  } as WeatherData;
-
-  const display = { 
-    main: weatherWithin.main,
-    description: weatherWithin.description,
-    icon: weatherWithin.icon,
-    city: ''
-  } as Display;
-
-  return {
-    display,
-    data
-  };
-};
-
-const injectCityName = (name: string, weatherObj: WeatherProps): WeatherProps => {
-  return {
-    ...weatherObj,
-    display: { 
-      ...weatherObj.display,
-      city: name
-    }
-  };
-};
 
 export default (): JSX.Element => { 
   const [params, setParams] = useState({});
