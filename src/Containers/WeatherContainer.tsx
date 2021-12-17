@@ -43,8 +43,10 @@ export default (): JSX.Element => {
   }, [cityData]);
 
   useEffect(() => {
-    if (city) setWeather(w => w && injectCityName(city, w));
-  }, [city]);
+    if (city && weather) {
+      if (!weather.display.city) setWeather(w => w && injectCityName(city, w));
+    }
+  }, [city, weather]);
 
   useEffect(() => {
     if (browserGeoError || error) setWaitUser(false);
