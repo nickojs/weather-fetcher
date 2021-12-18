@@ -56,13 +56,32 @@ export default (): JSX.Element => {
     if (browserGeoError || error) setWaitUser(false);
   }, [browserGeoError, error]);
 
+  const output = [
+    {
+      validation: waitUser,
+      component: <Loading type={LoadingType.USERINPUT} />
+    },
+    {
+      validation: browserGeoError,
+      component: <ErrorCard type={ErrorType.REFUSED} />
+    },
+    {
+      validation: loading,
+      component: <Loading type={LoadingType.NETWORK} />
+    },
+    {
+      validation: error,
+      component: error && <ErrorCard type={ErrorType.NETWORK} extraInfo={error} />
+    },
+    {
+      validation: weather,
+      component: weather && <WeatherCard {...weather} loading={loading} reload={setParamsHandler} />
+    }
+  ];
+
   return (
     <WeatherContainer>
-      {waitUser && <Loading type={LoadingType.USERINPUT} />}
-      {browserGeoError && <ErrorCard type={ErrorType.REFUSED} />}
-      {loading && <Loading type={LoadingType.NETWORK} />}
-      {error && <ErrorCard type={ErrorType.NETWORK} extraInfo={error} />}
-      {weather && <WeatherCard {...weather} loading={loading} reload={setParamsHandler} />} 
+      {output.map((c) => c.validation && c.component)}
     </WeatherContainer>
   );
 };
