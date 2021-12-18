@@ -15,5 +15,7 @@ export default {
     direction: 107.5,
     tempMin: 269,
     tempMax: 290
-  }
+  },
+  loading: false,
+  reload: () => {}
 };
