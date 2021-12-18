@@ -4,11 +4,12 @@ import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 
 export interface ReloadButtonBaseProps { 
   className?: string;
+  onClick?: () => void;
   loading: boolean;
 }
 
-const ReloadButtonBase = ({ className, loading }: ReloadButtonBaseProps) => (
-  <button className={className}>
+const ReloadButtonBase = ({ className, loading, onClick }: ReloadButtonBaseProps) => (
+  <button className={className} onClick={onClick} >
     <FontAwesomeIcon icon={faSyncAlt} />
   </button>
 );
