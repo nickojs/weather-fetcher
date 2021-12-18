@@ -58,7 +58,7 @@ export default (): JSX.Element => {
       {browserGeoError && <ErrorCard type={ErrorType.REFUSED} />}
       {loading && <Loading type={LoadingType.NETWORK} />}
       {error && <ErrorCard type={ErrorType.NETWORK} extraInfo={error} />}
-      {weather && <WeatherCard {...weather} />} 
+      {weather && <WeatherCard {...weather} loading={loading} reload={() => console.log('reload')}/>} 
     </WeatherContainer>
   );
 };

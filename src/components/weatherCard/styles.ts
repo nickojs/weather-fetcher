@@ -6,6 +6,10 @@ const GridBase = css`
   justify-content: space-around;
 `;
 
+export const WeatherInnerContainer = styled.div`
+  position: relative;
+`;
+
 export const WeatherHeader = styled.div`
   ${GridBase}
   flex-direction: column;

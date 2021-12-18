@@ -21,6 +21,10 @@ export interface WeatherProps {
   display: Display
   data: WeatherData
 }
+export interface WeatherCardProps extends WeatherProps { 
+  loading: boolean;
+  reload: () => void;
+}
 
 export interface ReverseGeoLocationResponse { 
   name: string;

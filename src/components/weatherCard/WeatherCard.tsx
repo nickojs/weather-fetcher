@@ -1,15 +1,22 @@
-import { WeatherHeader, WeatherDetails, WeatherTitle, WeatherTitleContainer } from './styles';
+import { WeatherHeader, 
+  WeatherDetails, 
+  WeatherTitle, 
+  WeatherTitleContainer, 
+  WeatherInnerContainer
+} from './styles';
 import IconText, { IconType } from './IconText';
-import { WeatherProps } from '../../interfaces';
+import Reload from '../UI/reload/Reload';
+import { WeatherCardProps } from '../../interfaces';
 import { tempParser as tp } from '../../helpers/weather';
 
-export default (props: WeatherProps): JSX.Element => { 
-  const { display, data } = props;
+export default (props: WeatherCardProps): JSX.Element => { 
+  const { display, data, loading, reload } = props;
   const { city, state, description, icon } = display;
   const { humidity, pressure, speed, direction, tempMin, tempMax } = data;
   
   return (
-    <div>
+    <WeatherInnerContainer>
+      {data && <Reload loading={loading} onClick={reload} />}
       <WeatherHeader>
         <h1>{city}</h1>
         <h5>{state}</h5>
@@ -26,6 +33,6 @@ export default (props: WeatherProps): JSX.Element => {
         {IconText({ type: IconType.PRESSURE, pressure })}
         {IconText({ type: IconType.WIND, speed, direction })}
       </WeatherDetails>
-    </div>
+    </WeatherInnerContainer>
   );
 };
