@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import useRequest from "../hooks/useRequest";
 import WeatherCard from "../components/weatherCard/WeatherCard";
 import ErrorCard from '../components/UI/errorCard/ErrorCard';
@@ -20,14 +20,18 @@ export default (): JSX.Element => {
 
   const { data, error, loading } = useRequest(params);
   const { data: cityData } = useRequest(cityParams);
+  
+  const setParamsHandler = useCallback(() => {
+    setParams(getWeather(lat, lon));
+  }, [lat, lon]);
 
   useEffect(() => { 
     if (lat !== 0 || lon !== 0) { 
-      setParams(getWeather(lat, lon));
+      setParamsHandler();
       setCityParams(getCityName(lat, lon));
       setWaitUser(false);
     }
-  }, [lat, lon]);
+  }, [lat, lon, setParamsHandler]);
 
   useEffect(() => {
     if (data) setWeather(weatherDataParser(data));
@@ -58,7 +62,7 @@ export default (): JSX.Element => {
       {browserGeoError && <ErrorCard type={ErrorType.REFUSED} />}
       {loading && <Loading type={LoadingType.NETWORK} />}
       {error && <ErrorCard type={ErrorType.NETWORK} extraInfo={error} />}
-      {weather && <WeatherCard {...weather} loading={loading} reload={() => console.log('reload')}/>} 
+      {weather && <WeatherCard {...weather} loading={loading} reload={setParamsHandler} />} 
     </WeatherContainer>
   );
 };
