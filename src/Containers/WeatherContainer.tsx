@@ -74,7 +74,7 @@ export default (): JSX.Element => {
       component: error && <ErrorCard type={ErrorType.NETWORK} extraInfo={error} />
     },
     {
-      validation: weather,
+      validation: weather && (weather && !loading),
       component: weather && <WeatherCard {...weather} loading={loading} reload={setParamsHandler} />
     }
   ];
