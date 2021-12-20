@@ -1,46 +1,21 @@
-# Getting Started with Create React App
+# Decisões de projeto
+---
+Por "convenção pessoal" e como exigência da vaga, a base do projeto foi feita com React + TypeScript. Nenhuma lib de UI, apenas styled-components. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Utilizei Storybook para desenvolver os componentes e documentá-los de forma mais intuitiva. Boa parte dos componentes estão preparados para utilizar controls, mas mesmo assim achei melhor criar uma story para cada estado.
 
-## Available Scripts
+Sobre o gerenciamento global de estado, acabei optando pelo ContextAPI invés de uma lib como redux. Isso me causou um certo incômodo quando percebi que precisaria fazer mais chamadas na API - entro nesse assunto mais adiante.
 
-In the project directory, you can run:
+E para fazer requisições à API do openweathermap utilizei axios, um custom hook e uma espécie de "endpoints creators". 
 
-### `yarn start`
+# Contratempos e escalabilidade
+---
+Quando percebi que precisaria fazer outra chamada na API para buscar o nome da cidade/estado, entendi que meu custom hook (useRequest) não escala muito bem. Como ele obrigatoriamente reage à um estado contendo ```params``` e só atende um endpoint, foi necessário criar outro estado com ```params``` relacionados ao endpoint que busca cidade/estado. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Isso poderia ser contornado com um *container* para cada *endpoint* (ou para um grupo de endpoints similares). Ou melhor ainda, o combo **redux + sagas**.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Considerações finais
+---
+  * Os componentes são **bem** simples, como não tinha uma UI definida (me baseei [nessa aqui](https://miro.medium.com/max/2000/1*3t0TyGikG-6_E3MZkmooSQ.png)), preferi focar na estruturação.
+  * Tenho pouca vivência com TypeScript, *talvez* alguns tipos podem estar sendo utilizado de forma engraçada/incoerente. O famoso "funciona, mas poderia ser mais bonito"
+  * Comecei o projeto pensando em testes, querendo implementar TDD, mas ainda não me sinto seguro com esse approach. Sei fazer testes e tenho uma certa exp com a testing-library e cypress, mas apenas em componentes que já existem, totalmente contra o TDD...
