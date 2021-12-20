@@ -1,4 +1,4 @@
-const appid = process.env.REACT_API_KEY;
+const appid = process.env.REACT_APP_API_KEY;
 
 const baseParams = {
   units: 'metric',
