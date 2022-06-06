@@ -1,8 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import useRequest from "../hooks/useRequest";
 import WeatherCard from "../components/weatherCard/WeatherCard";
-import ErrorCard from '../components/UI/errorCard/ErrorCard';
-import Loading from '../components/UI/loading/Loading';
 import usePosition from '../contexts/PositionContext';
 import { WeatherContainer } from './styles';
 import { getWeather, getCityName } from '../services/endpoints';
@@ -56,32 +54,9 @@ export default (): JSX.Element => {
     if (browserGeoError || error) setWaitUser(false);
   }, [browserGeoError, error]);
 
-  const output = [
-    {
-      validation: waitUser,
-      component: <Loading type={LoadingType.USERINPUT} />
-    },
-    {
-      validation: browserGeoError,
-      component: <ErrorCard type={ErrorType.REFUSED} />
-    },
-    {
-      validation: loading,
-      component: <Loading type={LoadingType.NETWORK} />
-    },
-    {
-      validation: error,
-      component: error && <ErrorCard type={ErrorType.NETWORK} extraInfo={error} />
-    },
-    {
-      validation: weather && (weather && !loading),
-      component: weather && <WeatherCard {...weather} loading={loading} reload={setParamsHandler} />
-    }
-  ];
-
   return (
     <WeatherContainer>
-      {output.map((c) => c.validation && c.component)}
+      <div>Placeholder</div>
     </WeatherContainer>
   );
 };

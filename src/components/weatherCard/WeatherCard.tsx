@@ -5,7 +5,6 @@ import { WeatherHeader,
   WeatherInnerContainer
 } from './styles';
 import IconText, { IconType } from './IconText';
-import Reload from '../UI/reload/Reload';
 import { WeatherCardProps } from '../../interfaces';
 import { tempParser as tp } from '../../helpers/weather';
 
@@ -16,7 +15,6 @@ export default (props: WeatherCardProps): JSX.Element => {
   
   return (
     <WeatherInnerContainer>
-      {data && <Reload loading={loading} onClick={reload} />}
       <WeatherHeader>
         <h1>{city}</h1>
         <h5>{state}</h5>

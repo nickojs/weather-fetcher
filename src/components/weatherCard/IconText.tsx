@@ -23,7 +23,7 @@ export default (actions: IconTextActions): JSX.Element => {
   case IconType.HUMIDITY:
     return (
       <IconTextWrapper>
-        <FontAwesomeIcon icon={faTint} />
+        <FontAwesomeIcon icon={"tint"} />
         <p>{actions.humidity}%</p>
       </IconTextWrapper>
     );
@@ -31,7 +31,7 @@ export default (actions: IconTextActions): JSX.Element => {
   case IconType.WIND:
     return (
       <IconTextWrapper>
-        <FontAwesomeIcon icon={faWind} style={{ transform: `rotate(${actions.direction}deg)` }}/>
+        <FontAwesomeIcon icon={"wind"} style={{ transform: `rotate(${actions.direction}deg)` }}/>
         <p>{actions.speed} m/s</p>
       </IconTextWrapper>
     );
@@ -39,7 +39,7 @@ export default (actions: IconTextActions): JSX.Element => {
   case IconType.PRESSURE:
     return (
       <IconTextWrapper>
-        <FontAwesomeIcon icon={faTachometerAlt} />
+        <FontAwesomeIcon icon={"tachometer-alt"} />
         <p>{actions.pressure} hPa</p>
       </IconTextWrapper>
     );
@@ -47,7 +47,7 @@ export default (actions: IconTextActions): JSX.Element => {
   case IconType.TEMPMAX:
     return (
       <IconTextWrapper>
-        <FontAwesomeIcon icon={faArrowUp} color='red'/>
+        <FontAwesomeIcon icon={"arrow-up"} color='red'/>
         <p>{actions.temp}&deg;</p>
       </IconTextWrapper>
     );
@@ -55,7 +55,7 @@ export default (actions: IconTextActions): JSX.Element => {
   case IconType.TEMPMIN:
     return (
       <IconTextWrapper>
-        <FontAwesomeIcon icon={faArrowDown} color='blue'/>
+        <FontAwesomeIcon icon={"arrow-down"} color='blue'/>
         <p>{actions.temp}&deg;</p>
       </IconTextWrapper>
     );
