@@ -1,8 +1,19 @@
 import moment from 'moment';
-import { Container } from './styles';
+import { 
+  Container, 
+  TitleWrapper, 
+  CityTitle, 
+  Temp, 
+  TempDetailsWrapper, 
+  MinMaxWrapper, 
+  MinWrapper,
+  MaxWrapper
+} from './styles';
 import { WeatherCardProps } from '../../interfaces';
 import { tempParser as tp } from '../../helpers/weather';
 import { defineBg } from '../../helpers/bg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
 
 export default (props: WeatherCardProps): JSX.Element => { 
@@ -12,23 +23,26 @@ export default (props: WeatherCardProps): JSX.Element => {
   
   return (
     <Container bg={defineBg(icon)}>
-      <div>
-        <h1>{city}</h1>
+      <TitleWrapper>
+        <CityTitle>{city}</CityTitle>
         <p>{moment().format("dddd, MMMM Do, YYYY")}</p>
-      </div>
+      </TitleWrapper>
 
-      <p>{tp(data.temp)}&deg;</p>
+      <Temp>{tp(data.temp)}&deg;C</Temp>
 
-      <div>
+      <TempDetailsWrapper>
         <p>{description}</p>
-        <div>
-          <p>{tempMin}ºC / {tempMax}ºC</p>
-        </div>
-      </div>
-
-      <div>
-        // reload button
-      </div>
+        <MinMaxWrapper>
+          <MinWrapper>
+            <FontAwesomeIcon icon={faCaretDown} />
+            <p>{tempMin}ºC</p>
+          </MinWrapper>
+          <MaxWrapper>
+            <FontAwesomeIcon icon={faCaretUp} />
+            <p>{tempMax}ºC</p>
+          </MaxWrapper>
+        </MinMaxWrapper>
+      </TempDetailsWrapper>
 
       <div>
         // section with more weather info

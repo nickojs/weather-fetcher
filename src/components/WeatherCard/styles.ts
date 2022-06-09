@@ -1,5 +1,18 @@
 import styled, { css } from 'styled-components';
 
+/*
+  In an IRL application, I'd probably opt for libs like stitches and radix to handle the Design System implementation
+*/
+
+const verticalSpace = css`
+  margin-top: 12px;
+  margin-bottom: 12px;
+`;
+
+const backdropTemp = css`
+  padding: 6px;
+`;
+
 export const Container = styled.section<{ bg: string }>`
   width: 300px;
   height: 500px;
@@ -13,47 +26,52 @@ export const Container = styled.section<{ bg: string }>`
 
   background: url(${ ({ bg }) => bg });
   background-position: center;
-
+  
+  // put this reset into a global scope afterwards
   * { 
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
   }
 `;
 
-const GridBase = css`
+export const TitleWrapper = styled.section`
+  ${verticalSpace}
+`;
+
+export const CityTitle = styled.h1`
+  font-size: 32px;
+`;
+
+export const Temp = styled.h2`
+  font-size: 64px;
+`;
+
+export const TempDetailsWrapper = styled.section`
+  ${verticalSpace}
+  p {
+    font-weight: bold;
+  }
+`;
+
+export const MinMaxWrapper = styled.section`
+  max-width: 160px;
+  margin: 0 auto;
+  
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-`;
-
-export const WeatherInnerContainer = styled.div`
-  position: relative;
-`;
-
-export const WeatherHeader = styled.div`
-  ${GridBase}
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
   
-  * { font-family: 'sans-serif'; }
-  p { margin: 24px 0; }
-  h1, h5 { margin: 0; }
-    
-  img { 
-    width: 50px;
-    height: 50px;
-  }
+  ${verticalSpace}
 `;
 
-export const WeatherDetails = styled.div`
-  ${GridBase}
+export const MinWrapper = styled.div`
+  ${backdropTemp}
+  * { color: #020EF0; }
 `;
 
-export const WeatherTitleContainer = styled.div`
-  ${GridBase}
-  height: 160px;
-`;
-
-export const WeatherTitle = styled.h1`
-  text-align: center;
+export const MaxWrapper = styled.div`
+  ${backdropTemp}
+  * { color: #BD1600; }
 `;
