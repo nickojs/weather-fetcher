@@ -1,5 +1,24 @@
 import styled, { css } from 'styled-components';
 
+export const Container = styled.section<{ bg: string }>`
+  width: 300px;
+  height: 500px;
+
+  margin: 0 auto;
+  text-align: center;
+  
+  border-radius: 12px;
+  border: 1px solid transparent;
+  box-shadow: 1px 1px 1px grey;
+
+  background: url(${ ({ bg }) => bg });
+  background-position: center;
+
+  * { 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+`;
+
 const GridBase = css`
   display: flex;
   flex-direction: row;
@@ -28,16 +47,6 @@ export const WeatherHeader = styled.div`
 
 export const WeatherDetails = styled.div`
   ${GridBase}
-`;
-
-export const IconTextWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  width: 100px;
-  min-width: 100px;
 `;
 
 export const WeatherTitleContainer = styled.div`

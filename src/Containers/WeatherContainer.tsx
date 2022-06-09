@@ -1,8 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import useRequest from "../hooks/useRequest";
-import WeatherCard from "../components/weatherCard/WeatherCard";
+import { WeatherCard } from "../components/";
 import usePosition from '../contexts/PositionContext';
-import { WeatherContainer } from './styles';
 import { getWeather, getCityName } from '../services/endpoints';
 import { injectExtraData, weatherDataParser } from '../helpers/weather';
 import { ErrorType, LoadingType, ReverseGeoLocationResponse, WeatherProps } from "../interfaces";
@@ -55,8 +54,6 @@ export default (): JSX.Element => {
   }, [browserGeoError, error]);
 
   return (
-    <WeatherContainer>
-      <div>Placeholder</div>
-    </WeatherContainer>
+    <div>Placeholder</div>
   );
 };

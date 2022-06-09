@@ -1,6 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import WeatherCard from '../components/weatherCard/WeatherCard';
-import { WeatherContainer } from '../Containers/styles';
+import { WeatherCard } from '../components/';
 import mock from '../mocks';
 import { WeatherCardProps } from '../interfaces';
 
@@ -10,9 +9,7 @@ export default {
 } as Meta;
 
 const WeatherCardStory: Story<WeatherCardProps> = (args) => (
-  <WeatherContainer>
-    <WeatherCard {...args} /> 
-  </WeatherContainer>
+  <WeatherCard {...args} /> 
 );
 
 export const WeatherInit = WeatherCardStory.bind({});
