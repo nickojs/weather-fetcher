@@ -3,7 +3,6 @@ export interface Display {
   description: string;
   icon: string;
   city: string;
-  state: string;
 }
 
 export interface WeatherData { 
