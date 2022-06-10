@@ -30,7 +30,7 @@ export default (props: WeatherCardProps): JSX.Element => {
 
   return (
     <Container bg={defineBg(icon)}>
-      <Menu onClick={reload} disabled={loading}>
+      <Menu onClick={reload} disabled={loading} loading={loading}>
         <FontAwesomeIcon icon={faRotate} />
       </Menu>
       <TitleWrapper>

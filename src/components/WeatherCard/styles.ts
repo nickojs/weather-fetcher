@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 /*
   In an IRL application, I'd probably opt for libs like stitches and radix to handle the Design System implementation
@@ -93,9 +93,18 @@ export const MaxWrapper = styled.div`
   * { color: #BD1600; }
 `;
 
-export const Menu = styled.button`
+const anim = keyframes`
+  from{
+    transform: rotate(0deg);
+  }to {
+    transform: rotate(365deg);
+  }
+`;
+
+export const Menu = styled.button<{ loading?: boolean }>`
   position: absolute;
   top: 0; left: 0; right: 0;
+  z-index: 3;
 
   margin: 0;
   padding: 6px;
@@ -107,4 +116,5 @@ export const Menu = styled.button`
   background: transparent;
   
   width: 100%;
+  animation: ${({ loading }) => loading ? anim : ''} 1s infinite;
 `;
