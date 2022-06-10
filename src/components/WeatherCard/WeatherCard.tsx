@@ -1,4 +1,9 @@
 import moment from 'moment';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faCaretDown, 
+  faCaretUp
+} from '@fortawesome/free-solid-svg-icons';
 import { 
   Container, 
   TitleWrapper, 
@@ -12,15 +17,14 @@ import {
 import { WeatherCardProps } from '../../interfaces';
 import { tempParser as tp } from '../../helpers/weather';
 import { defineBg } from '../../helpers/bg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
+import Drawer from '../Drawer/Drawer';
 
 
 export default (props: WeatherCardProps): JSX.Element => { 
   const { display, data, loading, reload } = props;
-  const { city, state, description, icon } = display;
-  const { humidity, pressure, speed, direction, tempMin, tempMax } = data;
-  
+  const { city, description, icon } = display;
+  const { tempMin, tempMax } = data;
+
   return (
     <Container bg={defineBg(icon)}>
       <TitleWrapper>
@@ -44,9 +48,7 @@ export default (props: WeatherCardProps): JSX.Element => {
         </MinMaxWrapper>
       </TempDetailsWrapper>
 
-      <div>
-        // section with more weather info
-      </div>
+      <Drawer {...data} />
     </Container>
   );
 };

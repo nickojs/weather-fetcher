@@ -14,6 +14,13 @@ const backdropTemp = css`
 `;
 
 export const Container = styled.section<{ bg: string }>`
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
   width: 300px;
   height: 500px;
 
