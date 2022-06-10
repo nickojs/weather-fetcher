@@ -82,3 +82,19 @@ export const MaxWrapper = styled.div`
   ${backdropTemp}
   * { color: #BD1600; }
 `;
+
+export const Menu = styled.button`
+  position: absolute;
+  top: 0; left: 0; right: 0;
+
+  margin: 0;
+  padding: 6px;
+  
+  text-decoration: underline;
+  
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  
+  width: 100%;
+`;

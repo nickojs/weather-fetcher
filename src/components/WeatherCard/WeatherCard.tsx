@@ -2,7 +2,8 @@ import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faCaretDown, 
-  faCaretUp
+  faCaretUp,
+  faRotate
 } from '@fortawesome/free-solid-svg-icons';
 import { 
   Container, 
@@ -12,7 +13,8 @@ import {
   TempDetailsWrapper, 
   MinMaxWrapper, 
   MinWrapper,
-  MaxWrapper
+  MaxWrapper,
+  Menu
 } from './styles';
 import { WeatherCardProps } from '../../interfaces';
 import { tempParser as tp } from '../../helpers/weather';
@@ -27,6 +29,9 @@ export default (props: WeatherCardProps): JSX.Element => {
 
   return (
     <Container bg={defineBg(icon)}>
+      <Menu onClick={reload} disabled={loading}>
+        <FontAwesomeIcon icon={faRotate} />
+      </Menu>
       <TitleWrapper>
         <CityTitle>{city}</CityTitle>
         <p>{moment().format("dddd, MMMM Do, YYYY")}</p>
