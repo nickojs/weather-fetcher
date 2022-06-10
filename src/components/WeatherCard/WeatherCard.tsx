@@ -14,7 +14,8 @@ import {
   MinMaxWrapper, 
   MinWrapper,
   MaxWrapper,
-  Menu
+  Menu,
+  DescriptionWrapper
 } from './styles';
 import { WeatherCardProps } from '../../interfaces';
 import { tempParser as tp } from '../../helpers/weather';
@@ -38,9 +39,11 @@ export default (props: WeatherCardProps): JSX.Element => {
       </TitleWrapper>
 
       <Temp>{tp(data.temp)}&deg;C</Temp>
+      <DescriptionWrapper>
+        <p>{description}</p>
+      </DescriptionWrapper>
 
       <TempDetailsWrapper>
-        <p>{description}</p>
         <MinMaxWrapper>
           <MinWrapper>
             <FontAwesomeIcon icon={faCaretDown} />

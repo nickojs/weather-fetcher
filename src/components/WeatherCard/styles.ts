@@ -19,12 +19,13 @@ export const Container = styled.section<{ bg: string }>`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
 
   width: 300px;
   height: 500px;
 
   margin: 0 auto;
+  padding: 12px 0;
+
   text-align: center;
   
   border-radius: 12px;
@@ -62,10 +63,19 @@ export const TempDetailsWrapper = styled.section`
   }
 `;
 
-export const MinMaxWrapper = styled.section`
-  max-width: 160px;
-  margin: 0 auto;
+export const DescriptionWrapper = styled.div`
+  padding: 12px;
+  background-color: rgba(0, 0, 0, .666);
   
+  p{
+    font-weight: bold;
+  }
+`;
+
+export const MinMaxWrapper = styled.section`
+  margin: 0 auto;
+  max-width: 200px;
+
   display: flex;
   flex-direction: row;
   justify-content: space-around;
